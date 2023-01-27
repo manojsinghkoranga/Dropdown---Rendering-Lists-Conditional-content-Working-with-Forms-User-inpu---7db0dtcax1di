@@ -1,4 +1,4 @@
-import React, { useState,useReducer } from "react";
+import React, { useState,useReducer, useEffect } from "react";
 import "./../styles/App.css";
 
 
@@ -138,13 +138,88 @@ const states = [{
 }];
 
 
-function App() 
-{
-	// Do not alter/remove main div
+function App() {
+
+	const [selectedState, setSelectedState] = useState(0);
+	const [stateObj, setStateObject] = useState(states[0]);
+
+	const [selectedCity, setSelectedCity] = useState(0);
+	const [cityObj, setCityObj] = useState(stateObj.city[0]);
+
+	const [selectedLandmark, setSelectedLandmark] = useState(0);
+	const [landmarkObj, setLandmarkObj] = useState(cityObj.landmarks[0]);
+
+	const handleStates = (event) => {
+		setSelectedState(Number(event.target.value));
+		setStateObject(states[Number(event.target.value)]);
+		setSelectedLandmark(0);
+		setLandmarkObj(cityObj.landmarks[0]);
+	}
+	useEffect (() => {
+		setSelectedCity(0);
+		setCityObj(stateObj.city[0]);
+	}, [selectedState])
+
+	const handleCity = (event) => {
+		setSelectedCity(Number(event.target.value));
+		setCityObj(stateObj.city[Number(event.target.value)]);
+	}
+
+	useEffect(() => {
+		setSelectedLandmark(0);
+		setLandmarkObj(cityObj.landmarks[0]);
+	}, [selectedCity])
+
+	const handleLandmark = (event) => {
+		setSelectedLandmark(Number(event.target.value));
+		setLandmarkObj(cityObj.landmarks[Number(event.target.value)]);
+	}
+
+
 	return (
-	<div id="main">
-		
-	</div>
+		<div id="main">
+			<div id="stateComponent">
+				<div id="state-title">State :</div>
+				<div id="state-name">
+					<select id="state" value={selectedState} onChange={handleStates}>
+						{states.map((obj, index)=>{
+							return <option key={index} value={index} >{obj.name}</option>
+						})}
+					</select>
+				</div>
+				<div id="state-description">
+					<h3>{stateObj.name}</h3><p>{stateObj.description}</p>
+				</div>
+			</div>
+			<div id="cityComponent">
+				<div id="city-title">City :</div>
+				<div id="city-name">
+					<select id="city" value={selectedCity} onChange={handleCity}>
+						{stateObj.city.map((obj, index)=>{
+							return <option key={index} value={index} >{obj.name}</option>
+						})}
+					</select>
+				</div>
+				<div id="city-description">
+					<h3>{cityObj.name}</h3><p>{cityObj.description}</p>
+				</div>
+			</div>
+			<div id="landmarkComponent">
+				<div id="landmark-title">Landmark :</div>
+				<div id="landmark-name">
+					<select id="landmark" value={selectedLandmark} onChange={handleLandmark}>
+						{cityObj.landmarks.map((obj, index)=>{
+							return <option key={index} value={index} >{obj.name}</option>
+						})}
+					</select>
+				</div>
+				<div id="landmark-description">
+					<h3>{landmarkObj.name}</h3><p>{landmarkObj.description}</p>
+				</div>
+			</div>
+			
+			
+		</div>
 	);
 }
 

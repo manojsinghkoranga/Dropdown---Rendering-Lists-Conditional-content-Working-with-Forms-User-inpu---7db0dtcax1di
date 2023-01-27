@@ -14,3 +14,58 @@ button{
 .bg-pink{
 	background-color:pink;
 }
+select{
+    min-width: 200px;
+}
+
+#stateComponent{
+    display: flex;
+    margin: 10px;
+}
+#cityComponent{
+    display: flex;
+    margin: 10px;
+}
+#landmarkComponent{
+    display: flex;
+    margin: 10px;
+}
+#state-title{
+    margin: 10px;
+    width: 80px;
+}
+#city-title{
+    margin: 10px;
+    width: 80px;
+}
+#landmark-title{
+    margin: 10px;
+    width: 80px;
+}
+#state-name{
+    margin: 10px;
+}
+#city-name{
+    margin: 10px;
+}
+#landmark-name{
+    margin: 10px;
+}
+#state-description{
+    width: 700px;
+    margin-left: 200px;
+    border: 1px solid black;
+    padding: 5px;
+}
+#city-description{
+    width: 700px;
+    margin-left: 200px;
+    border: 1px solid black;
+    padding: 5px;
+}
+#landmark-description{
+    width: 700px;
+    margin-left: 200px;
+    border: 1px solid black;
+    padding: 5px;
+}
