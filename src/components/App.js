@@ -152,8 +152,6 @@ function App() {
 	const handleStates = (event) => {
 		setSelectedState(Number(event.target.value));
 		setStateObject(states[Number(event.target.value)]);
-		setSelectedLandmark(0);
-		setLandmarkObj(cityObj.landmarks[0]);
 	}
 	useEffect (() => {
 		setSelectedCity(0);
@@ -176,10 +174,12 @@ function App() {
 	}
 
 
+
+
 	return (
 		<div id="main">
 			<div id="stateComponent">
-				<div id="state-title">State :</div>
+				<div>State :</div>
 				<div id="state-name">
 					<select id="state" value={selectedState} onChange={handleStates}>
 						{states.map((obj, index)=>{
@@ -187,12 +187,12 @@ function App() {
 						})}
 					</select>
 				</div>
-				<div id="state-description">
-					<h3>{stateObj.name}</h3><p>{stateObj.description}</p>
+				<div>
+					<div  id="state-title">{stateObj.name}</div><div id="state-description">{stateObj.description}</div>
 				</div>
 			</div>
 			<div id="cityComponent">
-				<div id="city-title">City :</div>
+				<div>City :</div>
 				<div id="city-name">
 					<select id="city" value={selectedCity} onChange={handleCity}>
 						{stateObj.city.map((obj, index)=>{
@@ -200,12 +200,12 @@ function App() {
 						})}
 					</select>
 				</div>
-				<div id="city-description">
-					<h3>{cityObj.name}</h3><p>{cityObj.description}</p>
+				<div >
+					<div id="city-title">{cityObj.name}</div><div id="city-description">{cityObj.description}</div>
 				</div>
 			</div>
 			<div id="landmarkComponent">
-				<div id="landmark-title">Landmark :</div>
+				<div>Landmark :</div>
 				<div id="landmark-name">
 					<select id="landmark" value={selectedLandmark} onChange={handleLandmark}>
 						{cityObj.landmarks.map((obj, index)=>{
@@ -213,8 +213,8 @@ function App() {
 						})}
 					</select>
 				</div>
-				<div id="landmark-description">
-					<h3>{landmarkObj.name}</h3><p>{landmarkObj.description}</p>
+				<div >
+					<div id="landmark-title">{landmarkObj.name}</div><div id="landmark-description">{landmarkObj.description}</div>
 				</div>
 			</div>
 			
