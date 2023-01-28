@@ -151,7 +151,7 @@ function App() {
 
 	const handleStates = (event) => {
 		setSelectedState(Number(event.target.value));
-		setStateObject(states[Number(event.target.value)]);
+		setStateObject(states[Number(event.target.value)]);	
 	}
 	useEffect (() => {
 		setSelectedCity(0);
@@ -166,7 +166,7 @@ function App() {
 	useEffect(() => {
 		setSelectedLandmark(0);
 		setLandmarkObj(cityObj.landmarks[0]);
-	}, [selectedCity])
+	}, [cityObj])
 
 	const handleLandmark = (event) => {
 		setSelectedLandmark(Number(event.target.value));
@@ -188,7 +188,8 @@ function App() {
 					</select>
 				</div>
 				<div>
-					<div  id="state-title">{stateObj.name}</div><div id="state-description">{stateObj.description}</div>
+					<div  id="state-title">{stateObj.name}</div>
+					<div id="state-description">{stateObj.description}</div>
 				</div>
 			</div>
 			<div id="cityComponent">
@@ -201,7 +202,8 @@ function App() {
 					</select>
 				</div>
 				<div >
-					<div id="city-title">{cityObj.name}</div><div id="city-description">{cityObj.description}</div>
+					<div id="city-title">{cityObj.name}</div>
+					<div id="city-description">{cityObj.description}</div>
 				</div>
 			</div>
 			<div id="landmarkComponent">
@@ -214,7 +216,8 @@ function App() {
 					</select>
 				</div>
 				<div >
-					<div id="landmark-title">{landmarkObj.name}</div><div id="landmark-description">{landmarkObj.description}</div>
+					<div id="landmark-title">{landmarkObj.name}</div>
+					<div id="landmark-description">{landmarkObj.description}</div>
 				</div>
 			</div>
 			
